@@ -6,7 +6,7 @@ import 'package:trippi_app/components/rounded_input_field.dart';
 import 'package:trippi_app/components/rounded_password_field.dart';
 import 'package:trippi_app/components/social_icon.dart';
 import 'package:trippi_app/views/authentication/signup_screen.dart';
-import 'package:trippi_app/views/splashscreen/splash_screen.dart';
+import 'package:trippi_app/navigation.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -51,7 +51,7 @@ class Body extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return SplashScreen();
+                        return NavigationBar();
                       },
                     ),
                   );

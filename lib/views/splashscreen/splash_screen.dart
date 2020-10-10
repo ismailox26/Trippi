@@ -49,7 +49,7 @@ class StartState extends State<SplashScreen> {
             Padding(padding: EdgeInsets.only(top: 20.0)),
             CircularProgressIndicator(
               backgroundColor: Colors.white,
-              strokeWidth: 1,
+              strokeWidth: 2,
             )
           ],
         ),
