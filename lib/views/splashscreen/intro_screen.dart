@@ -35,7 +35,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     );
 
     return IntroductionScreen(
-      animationDuration: 400,
+      animationDuration: 100,
       key: introKey,
       pages: [
         PageViewModel(

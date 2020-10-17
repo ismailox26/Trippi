@@ -1,3 +1,4 @@
+import 'package:trippi_app/views/home/HomeScreen.dart';
 import 'package:trippi_app/views/splashscreen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +12,14 @@ class MyApp extends StatelessWidget {
       title: 'Trippi',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
+        primaryColor: Colors.black,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashScreen(),
+      routes: {
+        "/": (context) => SplashScreen(),
+        "/home": (context) => HomeScreen(),
+      },
     );
   }
 }

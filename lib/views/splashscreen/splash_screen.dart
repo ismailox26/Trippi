@@ -31,7 +31,7 @@ class StartState extends State<SplashScreen> {
 
   initScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
