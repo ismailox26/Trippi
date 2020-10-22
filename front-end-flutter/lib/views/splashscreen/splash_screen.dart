@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:trippi_app/views/splashscreen/intro_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:trippi_app/views/authentication/check_auth.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class StartState extends State<SplashScreen> {
 
   route() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => OnBoardingPage()));
+        context, MaterialPageRoute(builder: (context) => CheckAuth()));
   }
 
   initScreen(BuildContext context) {

@@ -63,93 +63,96 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(30.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                TextFieldWidget(
-                  hintText: 'Email',
-                  obscureText: false,
-                  prefixIconData: Icons.mail_outline,
-                  suffixIconData: model.isValid ? Icons.check : null,
-                  onChanged: (value) {
-                    model.isValidEmail(value);
-                  },
-                  validator: (emailValue) {
-                    if (emailValue.isEmpty) {
-                      return 'Please enter email';
-                    }
-                    email = emailValue;
-                    return null;
-                  },
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    TextFieldWidget(
-                      hintText: 'Password',
-                      obscureText: model.isVisible ? false : true,
-                      prefixIconData: Icons.lock_outline,
-                      suffixIconData: model.isVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      validator: (passwordValue) {
-                        if (passwordValue.isEmpty) {
-                          return 'Please enter some text';
-                        }
-                        password = passwordValue;
-                        return null;
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Forgot password?',
-                      style: TextStyle(
-                        color: Global.mediumBlue,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                ButtonWidget(
-                  title: _isLoading ? 'Login...' : 'Login',
-                  hasBorder: false,
-                  onpress: () {
-                    if (_formKey.currentState.validate()) {
-                      _login();
-                    }
-                  },
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) => SignUpScreen()));
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  TextFieldWidget(
+                    hintText: 'Email',
+                    obscureText: false,
+                    prefixIconData: Icons.mail_outline,
+                    suffixIconData: model.isValid ? Icons.check : null,
+                    onChanged: (value) {
+                      model.isValidEmail(value);
                     },
-                    child: Text(
-                      'Create new Account',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15.0,
-                        decoration: TextDecoration.none,
-                        fontWeight: FontWeight.normal,
+                    validator: (emailValue) {
+                      if (emailValue.isEmpty) {
+                        return 'Please enter email';
+                      }
+                      email = emailValue;
+                      return null;
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      TextFieldWidget(
+                        hintText: 'Password',
+                        obscureText: model.isVisible ? false : true,
+                        prefixIconData: Icons.lock_outline,
+                        suffixIconData: model.isVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        validator: (passwordValue) {
+                          if (passwordValue.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          password = passwordValue;
+                          return null;
+                        },
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        'Forgot password?',
+                        style: TextStyle(
+                          color: Global.mediumBlue,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  ButtonWidget(
+                    title: _isLoading ? 'Login...' : 'Login',
+                    hasBorder: false,
+                    onpress: () {
+                      if (_formKey.currentState.validate()) {
+                        _login();
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) => SignUpScreen()));
+                      },
+                      child: Text(
+                        'Create new Account',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15.0,
+                          decoration: TextDecoration.none,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
@@ -165,7 +168,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
     var res = await Network().authData(data, '/auth/login');
     var body = json.decode(res.body);
-    if (body['success']) {
+    if (body['status'] == 'ok') {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString('token', json.encode(body['token']));
       localStorage.setString('user', json.encode(body['user']));

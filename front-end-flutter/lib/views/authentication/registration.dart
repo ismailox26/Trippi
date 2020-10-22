@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trippi_app/components/already_have_an_account_acheck.dart';
 import 'package:trippi_app/components/rounded_button.dart';
 import 'package:trippi_app/components/textfield_widget.dart';
 import 'package:trippi_app/navigation.dart';
 import 'package:trippi_app/services/api.dart';
-import 'package:trippi_app/views/authentication/welcome_model.dart';
+
 import 'login.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final model = Provider.of<HomeModel>(context);
+
     return Scaffold(
         body: Container(
       child: Center(
@@ -75,13 +75,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 10.0,
                     ),
                     TextFieldWidget(
-                      hintText: "PassWord",
+                      hintText: "Password",
                       obscureText: false,
                       onChanged: (value) {},
                       prefixIconData: Icons.lock_outline,
-                      suffixIconData: model.isVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
                       validator: (passwordValue) {
                         if (passwordValue.isEmpty) {
                           return 'Please enter some text';
@@ -147,10 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       var userData = json.decode(getCurrentUser.body);
       if (!userData.isEmpty) {
         localStorage.setString('user', json.encode(userData));
-        print(userData);
-      } else {
-        print('hhhhh');
-      }
+      } else {}
       Navigator.push(
         context,
         new MaterialPageRoute(builder: (context) => NavigationBar()),

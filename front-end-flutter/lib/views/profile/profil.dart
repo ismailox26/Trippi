@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:trippi_app/services/api.dart';
-import 'package:trippi_app/views/authentication/welcome_screen.dart';
+import 'package:trippi_app/views/authentication/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
       localStorage.remove('user');
       localStorage.remove('token');
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
+          context, MaterialPageRoute(builder: (context) => SignInScreen()));
     }
   }
 }

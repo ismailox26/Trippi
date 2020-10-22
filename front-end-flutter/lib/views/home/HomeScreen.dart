@@ -36,10 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             HeaderWithSearchBox(size: size),
             SizedBox(
-              height: 7,
+              height: 17,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -51,10 +51,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.w600),
                   ),
                   SizedBox(
-                    height: 7,
+                    height: 17,
                   ),
                   Container(
-                      height: 200,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: Offset(-5, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      height: 180,
                       child: ListView.builder(
                           itemCount: path.length,
                           physics: ClampingScrollPhysics(),
@@ -73,34 +82,50 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(
-              height: 8,
-            ),
-            Text(
-              'Places To Visit',
-              style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 9,
+              height: 17,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: ListView.builder(
-                  itemCount: place.length,
-                  physics: ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return PlacesToVisit(
-                      placeName: place[index].placeName,
-                      placeCity: place[index].placeCity,
-                      no0fVisit: place[index].no0fVisit,
-                      imgUrl: place[index].imgUrl,
-                      placeTemp: place[index].placeTemp,
-                      placeRating: place[index].placeRating,
-                    );
-                  }),
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Places To Visit',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      height: 17,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: Offset(-3, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: ListView.builder(
+                          itemCount: place.length,
+                          physics: ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return PlacesToVisit(
+                              placeName: place[index].placeName,
+                              placeCity: place[index].placeCity,
+                              no0fVisit: place[index].no0fVisit,
+                              imgUrl: place[index].imgUrl,
+                              placeTemp: place[index].placeTemp,
+                              placeRating: place[index].placeRating,
+                            );
+                          }),
+                    )
+                  ]),
             )
           ],
         )));

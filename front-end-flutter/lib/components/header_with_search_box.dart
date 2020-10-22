@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HeaderWithSearchBox extends StatelessWidget {
+class HeaderWithSearchBox extends StatefulWidget {
   const HeaderWithSearchBox({
     Key key,
     @required this.size,
@@ -9,9 +11,33 @@ class HeaderWithSearchBox extends StatelessWidget {
   final Size size;
 
   @override
+  _HeaderWithSearchBoxState createState() => _HeaderWithSearchBoxState();
+}
+
+class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
+  String name;
+
+  @override
+  void initState() {
+    _loadUserData();
+    super.initState();
+  }
+
+  _loadUserData() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    var user = jsonDecode(localStorage.getString('user'));
+
+    if (user != null) {
+      setState(() {
+        name = user['name'];
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      height: size.height * 0.17,
+      height: widget.size.height * 0.17,
       child: Stack(
         children: <Widget>[
           Container(
@@ -19,7 +45,7 @@ class HeaderWithSearchBox extends StatelessWidget {
               left: 40,
               bottom: 55,
             ),
-            height: size.height * 0.17,
+            height: widget.size.height * 0.17,
             decoration: BoxDecoration(
               color: Colors.grey.withOpacity(0.2),
               borderRadius: BorderRadius.only(
@@ -30,7 +56,7 @@ class HeaderWithSearchBox extends StatelessWidget {
               verticalDirection: VerticalDirection.up,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Hi Ismail !',
+                Text('Hi, $name',
                     style: Theme.of(context).textTheme.headline5.copyWith(
                         color: Colors.black, fontWeight: FontWeight.bold)),
                 Spacer(),

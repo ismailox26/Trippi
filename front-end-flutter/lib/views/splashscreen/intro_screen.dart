@@ -1,6 +1,6 @@
-import 'package:trippi_app/views/authentication/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:trippi_app/views/authentication/login.dart';
 
 class OnBoardingPage extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => WelcomeScreen()),
+      MaterialPageRoute(builder: (_) => SignInScreen()),
     );
   }
 
