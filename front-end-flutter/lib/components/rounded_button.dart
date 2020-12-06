@@ -36,7 +36,7 @@ class ButtonWidget extends StatelessWidget {
               child: Text(
                 title,
                 style: TextStyle(
-                  color: hasBorder ? Global.mediumBlue : Global.white,
+                  color: hasBorder ? Global.kPrimaryColor : Global.white,
                   fontWeight: FontWeight.w600,
                   fontSize: 16.0,
                 ),

@@ -32,7 +32,7 @@ class _DetailsState extends State<Details> {
             children: [
               Stack(
                 children: [
-                  Image.network(
+                  Image.asset(
                     widget.imgUrl,
                     height: 350,
                     width: MediaQuery.of(context).size.width,
@@ -73,10 +73,10 @@ class _DetailsState extends State<Details> {
                               SizedBox(
                                 width: 24,
                               ),
-                              Image.asset(
-                                "assets/heart.png",
-                                height: 24,
-                                width: 24,
+                              Icon(
+                                Icons.favorite,
+                                color: Colors.white,
+                                size: 24,
                               )
                             ],
                           ),
@@ -179,27 +179,19 @@ class _DetailsState extends State<Details> {
                   )
                 ],
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [DetailsCard(), DetailsCard()],
-                ),
-              ),
               SizedBox(
-                height: 8,
+                height: 12,
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                      fontSize: 15,
-                      height: 1.5,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff879D95)),
-                ),
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        fontSize: 15,
+                        height: 1.5,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black54)),
               ),
               SizedBox(
                 height: 16,
@@ -207,7 +199,7 @@ class _DetailsState extends State<Details> {
               Container(
                 height: 240,
                 child: ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                     itemCount: place.length,
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
@@ -221,79 +213,6 @@ class _DetailsState extends State<Details> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class DetailsCard extends StatelessWidget {
-  final String title;
-  final String noOfReviews;
-  final double rating;
-  DetailsCard({this.rating, this.title, this.noOfReviews});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-          color: Color(0xffE9F4F9), borderRadius: BorderRadius.circular(16)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: Color(0xffD5E6F2),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Image.asset(
-                  "assets/card1.png",
-                  height: 30,
-                ),
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Booking",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff5A6C64)),
-                  ),
-                  SizedBox(
-                    height: 6,
-                  ),
-                  Text(
-                    "8.0/10",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff5A6C64)),
-                  )
-                ],
-              )
-            ],
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            " Based on 30 reviews",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Color(0xff879D95)),
-          ),
-        ],
       ),
     );
   }
@@ -392,6 +311,15 @@ class ImageListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            blurRadius: 10,
+            offset: Offset(-5, 10),
+          ),
+        ],
+      ),
       margin: EdgeInsets.only(right: 8),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),

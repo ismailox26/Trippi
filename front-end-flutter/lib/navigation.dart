@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trippi_app/views/home/homescreen.dart';
 import 'package:trippi_app/views/notification/notificationscreen.dart';
 import 'package:trippi_app/views/profile/profil.dart';
-import 'package:trippi_app/views/search/searchscreen.dart';
+import 'package:trippi_app/views/search/mapview.dart';
+
 import 'package:trippi_app/constants.dart';
 
 class NavigationBar extends StatefulWidget {
@@ -12,7 +13,7 @@ class NavigationBar extends StatefulWidget {
 
 class _NavigationBarState extends State<NavigationBar> {
   int _currentIndex = 0;
-  final tabs = [HomeScreen(), NotificationScreen(), SearchScreen(), Home()];
+  final tabs = [HomeScreen(), NotificationScreen(), MapView(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {

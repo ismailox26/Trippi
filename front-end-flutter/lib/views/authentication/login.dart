@@ -9,7 +9,7 @@ import 'package:trippi_app/components/textfield_widget.dart';
 import 'package:trippi_app/services/api.dart';
 import 'package:trippi_app/views/authentication/registration.dart';
 import 'package:trippi_app/views/authentication/welcome_model.dart';
-import 'package:trippi_app/views/home/HomeScreen.dart';
+import 'package:trippi_app/navigation.dart';
 import '../../constants.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -52,7 +52,7 @@ class _SignInScreenState extends State<SignInScreen> {
       body: Stack(
         children: <Widget>[
           AnimatedPositioned(
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 700),
             curve: Curves.easeOutQuad,
             top: keyboardOpen ? -size.height / 2 : 0.0,
             child: Image.asset(
@@ -62,7 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.only(left: 30, right: 30, bottom: 70),
             child: Form(
               key: _formKey,
               child: Column(
@@ -171,10 +171,15 @@ class _SignInScreenState extends State<SignInScreen> {
     if (body['status'] == 'ok') {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString('token', json.encode(body['token']));
-      localStorage.setString('user', json.encode(body['user']));
+
+      var getCurrentUser = await Network().getData('/auth/me');
+      var userData = json.decode(getCurrentUser.body);
+      if (!userData.isEmpty) {
+        localStorage.setString('user', json.encode(userData));
+      } else {}
       Navigator.push(
         context,
-        new MaterialPageRoute(builder: (context) => HomeScreen()),
+        new MaterialPageRoute(builder: (context) => NavigationBar()),
       );
     } else {
       _showMsg(body['message']);

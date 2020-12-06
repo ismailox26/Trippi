@@ -6,7 +6,7 @@ List<PathModel> getPath() {
   PathModel pathModel = new PathModel();
 
 // path 1
-  pathModel.pathName = "Agadir";
+  pathModel.pathName = "Aga-Casa";
   pathModel.label = "New";
   pathModel.noOfTours = 12;
   pathModel.imgUrl = "assets/images/PH1.jpg";
@@ -15,7 +15,7 @@ List<PathModel> getPath() {
   pathModel = new PathModel();
 
 // path 2
-  pathModel.pathName = "Marrak";
+  pathModel.pathName = "Mar-Tang";
   pathModel.label = "";
   pathModel.noOfTours = 10;
   pathModel.imgUrl = "assets/images/PH2.jpg";
@@ -24,7 +24,7 @@ List<PathModel> getPath() {
   pathModel = new PathModel();
 
 // path 3
-  pathModel.pathName = "Essaou";
+  pathModel.pathName = "Ess-Fes";
   pathModel.label = "New";
   pathModel.noOfTours = 2;
   pathModel.imgUrl = "assets/images/PH3.jpg";
@@ -33,7 +33,7 @@ List<PathModel> getPath() {
   pathModel = new PathModel();
 
 // path 4
-  pathModel.pathName = "Tanger";
+  pathModel.pathName = "Aga-Laa";
   pathModel.label = "New";
   pathModel.noOfTours = 22;
   pathModel.imgUrl = "assets/images/PH4.jpg";
@@ -42,7 +42,7 @@ List<PathModel> getPath() {
   pathModel = new PathModel();
 
 // path 5
-  pathModel.pathName = "Tarou";
+  pathModel.pathName = "Taro-Mar";
   pathModel.label = "";
   pathModel.noOfTours = 2;
   pathModel.imgUrl = "assets/images/PH1.jpg";
@@ -51,7 +51,7 @@ List<PathModel> getPath() {
   pathModel = new PathModel();
 
 // path 6
-  pathModel.pathName = "Lmhadi";
+  pathModel.pathName = "Tet-Aga";
   pathModel.label = "New";
   pathModel.noOfTours = 10;
   pathModel.imgUrl = "assets/images/PH2.jpg";
@@ -60,7 +60,7 @@ List<PathModel> getPath() {
   pathModel = new PathModel();
 
 // path 7
-  pathModel.pathName = "Dakhla";
+  pathModel.pathName = "Dakh-Aga";
   pathModel.label = "New";
   pathModel.noOfTours = 32;
   pathModel.imgUrl = "assets/images/PH3.jpg";
@@ -77,7 +77,7 @@ List<PlacesModel> getPlace() {
 
 // place 1
 
-  placesModel.placeName = "dakar";
+  placesModel.placeName = "Tifoultoute ";
   placesModel.imgUrl = "assets/images/PH3.jpg";
   placesModel.no0fVisit = 12;
   placesModel.placeCity = "ouarzazat";

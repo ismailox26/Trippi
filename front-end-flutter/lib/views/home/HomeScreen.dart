@@ -57,9 +57,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 10,
-                            offset: Offset(-5, 3), // changes position of shadow
+                            color: Colors.grey.withOpacity(0.5),
+                            blurRadius: 20,
+                            offset:
+                                Offset(-3, 10), // changes position of shadow
                           ),
                         ],
                       ),
@@ -100,15 +101,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 17,
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 10,
-                            offset: Offset(-3, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: ListView.builder(
                           itemCount: place.length,

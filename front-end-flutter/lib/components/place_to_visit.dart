@@ -36,6 +36,13 @@ class PlacesToVisit extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  blurRadius: 10,
+                  offset: Offset(-2, 10), // changes position of shadow
+                )
+              ]),
               child: Stack(
                 children: [
                   ClipRRect(
@@ -154,13 +161,26 @@ class PlacesToVisit extends StatelessWidget {
               ),
             ),
             Container(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                width: size.width,
+                child: Text(
+                  'Striking hilltop fortress dating from the 17th & 18th centuries, now a ...',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                ),
                 height: 60,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(10),
                       bottomRight: Radius.circular(10),
-                    )))
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 10,
+                        offset: Offset(-2, 10), // changes position of shadow
+                      )
+                    ]))
           ],
         ),
       ),

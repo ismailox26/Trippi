@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HeaderWithSearchBox extends StatefulWidget {
   const HeaderWithSearchBox({
@@ -15,29 +13,10 @@ class HeaderWithSearchBox extends StatefulWidget {
 }
 
 class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
-  String name;
-
-  @override
-  void initState() {
-    _loadUserData();
-    super.initState();
-  }
-
-  _loadUserData() async {
-    SharedPreferences localStorage = await SharedPreferences.getInstance();
-    var user = jsonDecode(localStorage.getString('user'));
-
-    if (user != null) {
-      setState(() {
-        name = user['name'];
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.size.height * 0.17,
+      height: widget.size.height * 0.12,
       child: Stack(
         children: <Widget>[
           Container(
@@ -47,20 +26,10 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
             ),
             height: widget.size.height * 0.17,
             decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.2),
+              //color: Colors.grey.withOpacity(0.2),
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30)),
-            ),
-            child: Row(
-              verticalDirection: VerticalDirection.up,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Hi, $name',
-                    style: Theme.of(context).textTheme.headline5.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
-                Spacer(),
-              ],
             ),
           ),
           Positioned(
